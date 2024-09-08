@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Card from "../components/Card"
 import Chip from "../components/chip"
-import Sorted from "../components/sorted"
+// import Sorted from "../components/sorted"
 function Product() {
     const [item, setItem] = useState([])
     const [catagores, setCatagores] = useState([])

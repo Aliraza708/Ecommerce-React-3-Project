@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-
 function Card({ item,  }) {
     const {thumbnail,title,category,price,id} = item
     return (
