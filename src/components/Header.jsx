@@ -7,12 +7,19 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SimpleDropdownMenu from './pagesTags';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../untily/firebase';
 
 
 function Header() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+    const {userShow,setusershow} = React.useState([]) 
+    // const { user } = React.useContext(UserContext);
+    // console.log(user)
 
+    console.log(userShow)
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -20,8 +27,6 @@ function Header() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-
 
     return (
         <div className="flex bg-gray-50 h-16 justify-between items-center">
@@ -66,7 +71,9 @@ function Header() {
                         <MenuItem onClick={handleClose}>My account</MenuItem>
                         <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </Menu>
+                    
                 </div>
+                <SimpleDropdownMenu/>
             </div>
             <div>
 

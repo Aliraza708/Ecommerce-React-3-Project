@@ -4,21 +4,28 @@ import Home from "./pages/Home";
 import Header from "./components/Header";
 import Product from "./pages/Product";
 import ProductDetail from "./pages/ProductDetail";
-// import ApiProvider from "./Context.jsx/ContextApi";
-
+import About from "./pages/About";
+import SingUp from "./pages/SingUp";
+import SingIn from "./pages/SingIn";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
-    // <ApiProvider>
+ 
+
     < BrowserRouter >
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Product" element={<Product />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/SingUp" element={<SingUp />} />
+        <Route path="/Login" element={<SingIn />} />
+        <Route path="/Contact" element={<Contact />} />
+        <Route path="/Product" element={<Product />} />   
         <Route path="/products/:id" element={<ProductDetail />} />
       </Routes>
     </BrowserRouter>
-    // </ApiProvider>
+   
 
   );
 }
