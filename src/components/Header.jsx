@@ -10,6 +10,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SimpleDropdownMenu from './pagesTags';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../untily/firebase';
+import { Link } from 'react-router-dom';
 
 
 function Header() {
@@ -67,9 +68,12 @@ function Header() {
                         onClose={handleClose}
                         TransitionComponent={Fade}
                     >
-                        <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}>My account</MenuItem>
-                        <MenuItem onClick={handleClose}>Logout</MenuItem>
+                        {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
+                        <MenuItem onClick={handleClose}>My account</MenuItem> */}
+                        <Link to={"/Login"}>
+                            <MenuItem onClick={handleClose}>Login</MenuItem>
+                        </Link>
+                        
                     </Menu>
                     
                 </div>
