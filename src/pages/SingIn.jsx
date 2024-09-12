@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import GoogleIcon from '@mui/icons-material/Google';
 import { Link, useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../untily/firebase';
 function SignIn() {
     const navigiton = useNavigate()
@@ -17,6 +17,22 @@ function SignIn() {
             setlogding(false)
 
         })
+    }
+    function GoogleSingIn() {
+        const provider = new GoogleAuthProvider();
+        provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+        signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+   navigiton("/")
+
+  }).catch((error) => {
+      
+    console.log("errr",error)
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });   
     }
     // setlogding(false)
 
@@ -85,9 +101,10 @@ function SignIn() {
                     <hr className="w-full border-gray-300" />
                 </div>
                 <button
+                  onClick={GoogleSingIn}
                     className="w-full py-2 px-4 bg-red-600 text-white font-semibold rounded-lg shadow-md flex items-center justify-center hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                 >
-                    <GoogleIcon className="mr-2" /> Login with Google
+                    <GoogleIcon  className="mr-2" /> Login with Google
                 </button>
             </div>
         </div>

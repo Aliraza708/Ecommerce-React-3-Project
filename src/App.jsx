@@ -8,11 +8,16 @@ import About from "./pages/About";
 import SingUp from "./pages/SingUp";
 import SingIn from "./pages/SingIn";
 import Contact from "./pages/Contact";
+import ThemeProvider from "./Context/Theme";
+import UserContextprovider from "./Context/User";
+import SearchContextProvidner from "./Context/Search";
+import Footer from "./components/Footer";
 
 function App() {
-  return (
- 
-
+  return ( 
+ <UserContextprovider> 
+  <SearchContextProvidner>
+  < ThemeProvider>
     < BrowserRouter >
       <Header />
       <Routes>
@@ -24,8 +29,11 @@ function App() {
         <Route path="/Product" element={<Product />} />   
         <Route path="/products/:id" element={<ProductDetail />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
-   
+    </ThemeProvider>
+    </SearchContextProvidner>
+    </UserContextprovider>
 
   );
 }
